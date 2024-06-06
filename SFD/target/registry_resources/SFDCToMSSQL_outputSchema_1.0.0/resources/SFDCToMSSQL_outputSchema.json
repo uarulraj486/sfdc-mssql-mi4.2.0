@@ -1,0 +1,53 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "outputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "array",
+  "items" : [ {
+    "properties" : {
+      "Id" : {
+        "id" : "http://wso2jsonschema.org/0/Id",
+        "type" : "string"
+      },
+      "Name" : {
+        "id" : "http://wso2jsonschema.org/0/Name",
+        "type" : "string"
+      },
+      "Phone" : {
+        "id" : "http://wso2jsonschema.org/0/Phone",
+        "type" : "string"
+      },
+      "Email" : {
+        "id" : "http://wso2jsonschema.org/0/Email",
+        "type" : "string"
+      },
+      "Fax" : {
+        "id" : "http://wso2jsonschema.org/0/Fax",
+        "type" : "string"
+      },
+      "Title" : {
+        "id" : "http://wso2jsonschema.org/0/Title",
+        "type" : "string"
+      },
+      "Address" : {
+        "id" : "http://wso2jsonschema.org/0/Address",
+        "type" : "string"
+      },
+      "PostalCode" : {
+        "id" : "http://wso2jsonschema.org/0/PostalCode",
+        "type" : "number"
+      },
+      "IsDeleted" : {
+        "id" : "http://wso2jsonschema.org/0/IsDeleted",
+        "type" : "boolean"
+      },
+      "LastModifiedDate" : {
+        "id" : "http://wso2jsonschema.org/0/LastModifiedDate",
+        "type" : "string"
+      }
+    },
+    "id" : "http://wso2jsonschema.org/0",
+    "type" : "object"
+  } ]
+}

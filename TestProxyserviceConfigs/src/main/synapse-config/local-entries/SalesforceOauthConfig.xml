@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="SalesforceOauthConfig" xmlns="http://ws.apache.org/ns/synapse">
+    <salesforce_bulkapi_v2.init>
+        <refreshToken>{$ctx:uri.var.refershToken}</refreshToken>
+        <clientSecret>{$ctx:clientSecret}</clientSecret>
+        <connectionType>init</connectionType>
+        <name>SalesforceOauthConfig</name>
+        <instanceUrl>{$ctx:uri.var.instanceURL}</instanceUrl>
+        <clientId>{$ctx:uri.var.clientId}</clientId>
+    </salesforce_bulkapi_v2.init>
+</localEntry>

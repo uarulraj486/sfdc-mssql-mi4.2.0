@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data name="msdataservice" serviceNamespace="" serviceGroup="" transports="http https" enableBatchRequests="true">
+  <description />
+  <resource method="POST" path="/addContact">
+    <call-query href="addContact">
+      <with-param name="name" query-param="name" />
+      <with-param name="phone" query-param="phone" />
+      <with-param name="fax" query-param="fax" />
+      <with-param name="email" query-param="email" />
+      <with-param name="title" query-param="title" />
+      <with-param name="address" query-param="address" />
+      <with-param name="backupPostalCode" query-param="backupPostalCode" />
+      <with-param name="Isdeleted" query-param="Isdeleted" />
+      <with-param name="lastModifieddate" query-param="lastModifieddate" />
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </resource>
+  <config id="ContactDBDetails">
+    <property name="driverClassName">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="url">jdbc:sqlserver://20.205.175.117:1433;dbName=MIPOC;SendStringParametersAsUnicode=false;integratedSecurity=false;trustServerCertificate=true
+</property>
+    <property name="username">upaharab</property>
+    <property name="password">Admin@123</property>
+  </config>
+  <resource method="GET" path="/retrieveContactDetails" returnRequestStatus="true">
+    <description />
+    <call-query href="GetContactDetails">
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </resource>
+  <query id="addContact" useConfig="ContactDBDetails">
+    <sql>insert into Contact(id,name,phone,fax,email,title,address,backupPostalCode,Isdeleted,lastModifieddate)
+			values(:id,:name,:phone,:fax,:email,:title,:address,:backupPostalCode,:Isdeleted,:lastModifieddate)
+		</sql>
+    <param name="name" paramType="SCALAR" sqlType="STRING" />
+    <param name="phone" paramType="SCALAR" sqlType="STRING" />
+    <param name="fax" paramType="SCALAR" sqlType="STRING" />
+    <param name="email" paramType="SCALAR" sqlType="STRING" />
+    <param name="title" paramType="SCALAR" sqlType="STRING" />
+    <param name="address" paramType="SCALAR" sqlType="STRING" />
+    <param name="backupPostalCode" paramType="SCALAR" sqlType="INTEGER" type="IN" optional="false" />
+    <param name="Isdeleted" paramType="SCALAR" sqlType="BIT" type="IN" optional="false" />
+    <param name="id" paramType="SCALAR" sqlType="STRING" type="IN" optional="false" />
+    <param name="lastModifieddate" paramType="SCALAR" sqlType="DATE" type="IN" optional="false" />
+  </query>
+  <query id="GetContactDetails" useConfig="ContactDBDetails">
+    <sql>select id, name,phone,fax,email,title,address,backupPostalCode,Isdeleted,lastModifiedDate
+from Contact where id=:id </sql>
+    <param name="id" paramType="SCALAR" sqlType="STRING" />
+    <result element="Entries" rowName="Entry">
+      <element name="id" column="id" xsdType="string" />
+      <element name="name" column="name" xsdType="string" />
+      <element name="phone" column="phone" xsdType="string" />
+      <element name="fax" column="fax" xsdType="string" />
+      <element name="email" column="email" xsdType="string" />
+      <element name="title" column="title" xsdType="string" />
+      <element name="address" column="address" xsdType="string" />
+      <element name="backupPostalCode" column="backupPostalCode" xsdType="integer" requiredRoles="" />
+      <element name="Isdeleted" column="Isdeleted" xsdType="boolean" requiredRoles="" />
+      <element name="lastModifiedDate" column="lastModifiedDate" xsdType="string" />
+    </result>
+  </query>
+  <operation name="addcontact" returnRequestStatus="true">
+    <call-query href="addContact">
+      <with-param name="name" query-param="name" />
+      <with-param name="phone" query-param="phone" />
+      <with-param name="fax" query-param="fax" />
+      <with-param name="email" query-param="email" />
+      <with-param name="title" query-param="title" />
+      <with-param name="address" query-param="address" />
+      <with-param name="backupPostalCode" query-param="backupPostalCode" />
+      <with-param name="Isdeleted" query-param="Isdeleted" />
+      <with-param name="lastModifieddate" query-param="lastModifieddate" />
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </operation>
+  <operation name="getContactDetails" returnRequestStatus="true">
+    <call-query href="GetContactDetails">
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </operation>
+</data>

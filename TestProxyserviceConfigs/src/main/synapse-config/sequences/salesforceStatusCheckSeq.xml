@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="salesforceStatusCheckSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <filter regex="200" source="$ctx:HTTP_statusCode">
+        <then/>
+        <else>
+            <property expression="$ctx:HTTP_statusCode" name="statusCode" scope="default" type="STRING"/>
+            <property expression="json-eval($[0].errorCode)" name="code" scope="default" type="STRING"/>
+            <property expression="json-eval($[0].message)" name="message" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>[{"status":"Failure",
+							  "statusCode":"$1",
+							   "message":"$2"
+							}]</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('statusCode')"/>
+                    <arg evaluator="xml" expression="concat(get-property('code'),' ',get-property('message'))"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </else>
+    </filter>
+</sequence>

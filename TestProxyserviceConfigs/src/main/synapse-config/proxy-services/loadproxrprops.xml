@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="loadproxrprops" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <salesforce_bulkapi_v2.createQueryJob configKey="SalesforceOauthConfig">
+                <query>SELECT firstname, lastname,phone,email,fax,title, mailingstreet,mailingcity,mailingstate,mailingcountry,otherpostalcode,lastmodifieddate FROM Contact where id ='750dL000000y9e4QAA'</query>
+                <operation>QUERY</operation>
+                <columnDelimiter>COMMA</columnDelimiter>
+                <lineEnding>LF</lineEnding>
+            </salesforce_bulkapi_v2.createQueryJob>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

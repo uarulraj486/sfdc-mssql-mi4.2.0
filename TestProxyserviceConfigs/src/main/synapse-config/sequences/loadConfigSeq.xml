@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="loadConfigSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="get-property('sfdcqueryConfig')" name="sfdcQueryConfig" scope="default" type="OM" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$ctx:sfdcQueryConfig//*[local-name()='createJobQuery']" name="uri.var.createJobQuery" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="get-property('uri.var.createJobQuery')" name="createJobQuery" scope="default" type="STRING"/>
+    <property expression="get-property('sfdcOAuthConfig')" name="sfdcOAuthConfig" scope="default" type="OM" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$ctx:sfdcOAuthConfig//*[local-name()='salesforceConfigName']" name="uri.var.configName" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$ctx:sfdcOAuthConfig//*[local-name()='instanceURL']" name="uri.var.instanceURL" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$ctx:sfdcOAuthConfig//*[local-name()='clientID']" name="uri.var.clientId" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$ctx:sfdcOAuthConfig//*[local-name()='clientSecret']" name="uri.var.clientSecret" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$ctx:sfdcOAuthConfig//*[local-name()='refreshToken']" name="uri.var.refreshToken" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+</sequence>

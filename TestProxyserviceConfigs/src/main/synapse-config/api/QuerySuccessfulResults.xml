@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/salesforce" name="QuerySuccessfulResults" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/createquery">
+        <inSequence>
+            <sequence key="loadConfigSeq"/>
+            <salesforce_bulkapi_v2.createQueryJob configKey="SalesforceOauthConfig">
+                <query>{$ctx:createJobQuery}</query>
+                <operation>QUERY</operation>
+                <columnDelimiter>COMMA</columnDelimiter>
+                <lineEnding>LF</lineEnding>
+            </salesforce_bulkapi_v2.createQueryJob>
+            <property expression="$axis2:HTTP_SC" name="HTTP_statusCode" scope="default" type="STRING"/>
+            <sequence key="salesforceStatusCheckSeq"/>
+            <log level="full">
+                <property expression="json-eval($.id)" name="jobid"/>
+            </log>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/getqueryJobinfo">
+        <inSequence>
+            <property expression="json-eval($.id)" name="queryJobId" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="$ctx:createQueryJobId" name="queryJobId"/>
+                <property expression="get-property('queryJobId')" name="queryJobIdProperty"/>
+            </log>
+            <property expression="get-property('queryJobId')" name="queryJobIdProperty" scope="default" type="STRING"/>
+            <sequence key="loadConfigSeq"/>
+            <salesforce_bulkapi_v2.getQueryJobInfo configKey="SalesforceOauthConfig">
+                <queryJobId>{$ctx:queryJobId}</queryJobId>
+            </salesforce_bulkapi_v2.getQueryJobInfo>
+            <log level="full"/>
+            <property expression="$axis2:HTTP_SC" name="HTTP_statusCode" scope="default" type="STRING"/>
+            <sequence key="salesforceStatusCheckSeq"/>
+            <property name="Response" scope="default" type="STRING" value="json-eval($.id)"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/getQueryJobResults">
+        <inSequence>
+            <property expression="json-eval($.id)" name="jobId" scope="default" type="STRING"/>
+            <property expression="get-property('query.param.maxRecords')" name="maxRecords" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="get-property('maxRecords')" name="maxRecords"/>
+                <property expression="get-property('query.param.maxRecords')" name="records"/>
+            </log>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <sequence key="loadConfigSeq"/>
+            <salesforce_bulkapi_v2.getQueryJobResults configKey="SalesforceOauthConfig">
+                <queryJobId>{$ctx:jobId}</queryJobId>
+                <maxRecords>{get-property('maxRecords')}</maxRecords>
+                <outputType>JSON</outputType>
+                <includeResultTo>BODY</includeResultTo>
+            </salesforce_bulkapi_v2.getQueryJobResults>
+            <log level="full">
+                <property expression="json-eval($)" name="&#xd;getQuery JobResults response:"/>
+                <property expression="json-eval($)" name="&#xd;Before Data Mapper response:"/>
+                <property expression="$trp:Sforce-Locator" name="&#xd;Locator:"/>
+            </log>
+            <property expression="$axis2:HTTP_SC" name="HTTP_statusCode" scope="default" type="STRING"/>
+            <sequence key="salesforceStatusCheckSeq"/>
+            <validate cache-schema="true" source="body">
+                <schema key="sfdcContact"/>
+                <on-fail>
+                    <payloadFactory media-type="json">
+                        <format>{"errorMessage":"$1",
+                "errorCode":"$2",
+                "errorDetail":"$3",
+                "message":"New fields are present in the Current Salesforce Object"}</format>
+                        <args>
+                            <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                            <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                            <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
+                    <respond/>
+                </on-fail>
+            </validate>
+            <sequence key="dataMapperSeq"/>
+            <property expression="json-eval($)" name="dataMapperResponse" scope="default" type="STRING"/>
+            <sequence description="insertContactRecordsSeq" key="insertRecordsSeq"/>
+            <property expression="get-property('responseValue')" name="dataServiceCallMediatorResponse" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>[{	"status":"$1",
+	 									"successfulllyInsertedRecords":"$2"
+									}]
+			</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('dataServiceCallMediatorResponse')"/>
+                    <arg evaluator="xml" expression="$ctx:maxRecords"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="ERROR_MESSAGE" value="Error Occurred in getQueryJobResults flow"/>
+                <property expression="get-property('ERROR_MESSAGE')" name="ERROR_MESSAGE"/>
+                <property expression="get-property('ERROR_CODE')" name="ERROR_CODE"/>
+                <property expression="get-property('ERROR_DETAIL')" name="ERROR_DETAIL"/>
+            </log>
+        </faultSequence>
+    </resource>
+</api>

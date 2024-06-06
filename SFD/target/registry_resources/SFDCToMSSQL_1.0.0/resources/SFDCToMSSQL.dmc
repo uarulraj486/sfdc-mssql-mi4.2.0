@@ -1,0 +1,58 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+var REPLACE_10_0 = '';
+var REPLACE_11_0 = '';
+var REPLACE_12_0 = '';
+var REPLACE_13_0 = '';
+var CONCAT_14_0 = '';
+var REPLACE_17_0 = '';
+var CONCAT_16_0 = '';
+var TRIM_18_0 = '';
+
+var count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f = 0;
+outputroot =  [];
+
+for(i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f in inputroot){
+REPLACE_10_0 = (inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].MailingCountry).toString().replace("\n"," ");
+REPLACE_11_0 = (inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].MailingState).toString().replace("\n"," ");
+REPLACE_12_0 = (inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].MailingCity).toString().replace("\n"," ");
+REPLACE_13_0 = (inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].MailingStreet).toString().replace("\n"," ");
+CONCAT_14_0 = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].FirstName.toString().concat(' ',inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].LastName);
+REPLACE_17_0 = (REPLACE_13_0).toString().replace("\n"," ");
+CONCAT_16_0 = REPLACE_17_0.toString().concat(' ',REPLACE_12_0).concat(' ',REPLACE_10_0).concat(' ',REPLACE_11_0);
+TRIM_18_0 = CONCAT_16_0.toString().trim();
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f] =  {};
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Id = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Id;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Name = CONCAT_14_0;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Phone = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Phone;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Email = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Email;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Fax = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Fax;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Title = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Title;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].Address = TRIM_18_0;
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].PostalCode = Number(inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].OtherPostalCode);
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].IsDeleted =  inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].IsDeleted.toString().toLowerCase() === 'true';
+outputroot[count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].LastModifiedDate = inputroot[i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f].LastModifiedDate;
+
+count_i_inputroot_40f70a53_8711_4fbd_a999_a665f8c90c5f++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

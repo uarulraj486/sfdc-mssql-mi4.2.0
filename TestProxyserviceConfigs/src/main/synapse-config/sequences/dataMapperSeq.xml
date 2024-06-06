@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="dataMapperSeq" onError="faultSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property name="Operation" scope="default" type="STRING" value="Transformation-DataMapper"/>
+    <log level="full">
+        <property expression="$body" name="&#xd;Datamapper Message Payload"/>
+    </log>
+    <datamapper config="gov:datamapper/SFDCToMSSQL.dmc" inputSchema="gov:datamapper/SFDCToMSSQL_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/SFDCToMSSQL_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/SFDCToMSSQL_xsltStyleSheet.xml"/>
+</sequence>

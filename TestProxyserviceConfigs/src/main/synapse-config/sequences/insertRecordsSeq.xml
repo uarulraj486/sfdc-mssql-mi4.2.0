@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="insertRecordsSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <foreach expression="json-eval($)">
+        <sequence>
+            <log level="full">
+                <property expression="$body" name="ForEach Record"/>
+            </log>
+            <dataServiceCall serviceName="msdataservice">
+                <operations type="single">
+                    <operation name="addcontact">
+                        <param evaluator="json" expression="json-eval($.Id)" name="id"/>
+                        <param evaluator="json" expression="json-eval($.Name)" name="name"/>
+                        <param evaluator="json" expression="json-eval($.Phone)" name="phone"/>
+                        <param evaluator="json" expression="json-eval($.Fax)" name="fax"/>
+                        <param evaluator="json" expression="json-eval($.Email)" name="email"/>
+                        <param evaluator="json" expression="json-eval($.Title)" name="title"/>
+                        <param evaluator="json" expression="json-eval($.Address)" name="address"/>
+                        <param evaluator="json" expression="json-eval($.PostalCode)" name="backupPostalCode"/>
+                        <param evaluator="json" expression="json-eval($.IsDeleted)" name="isdeleted"/>
+                        <param evaluator="json" expression="json-eval($.LastModifiedDate)" name="lastModifieddate"/>
+                    </operation>
+                </operations>
+                <source type="inline"/>
+                <target name="responseValue" type="property"/>
+            </dataServiceCall>
+            <property expression="$axis2:HTTP_SC" name="HTTP_statusCode" scope="default" type="STRING"/>
+            <filter regex="200" source="$ctx:HTTP_statusCode">
+                <then/>
+                <else>
+                    <property expression="$ctx:HTTP_statusCode" name="errorCode" scope="default" type="STRING"/>
+                    <log level="custom">
+                        <property name="ERROR_MESSAGE" value="Error Occurred in DataService Call Mediator"/>
+                        <property expression="get-property('ERROR_MESSAGE')" name="ERROR_MESSAGE"/>
+                        <property expression="get-property('ERROR_CODE')" name="ERROR_CODE"/>
+                        <property expression="get-property('ERROR_DETAIL')" name="ERROR_DETAIL"/>
+                    </log>
+                    <payloadFactory media-type="json">
+                        <format>[{"status":"Failure",
+  "errorCode":"$1",
+   "errorMessage":"$2"
+}]</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('errorCode')"/>
+                            <arg evaluator="xml" expression="get-property('message')"/>
+                        </args>
+                    </payloadFactory>
+                </else>
+            </filter>
+        </sequence>
+    </foreach>
+</sequence>

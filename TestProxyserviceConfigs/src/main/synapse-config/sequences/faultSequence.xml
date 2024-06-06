@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="faultSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="full">
+        <property name="ERROR" value="Data Mapping Error Occurred"/>
+        <property expression="get-property('ERROR_CODE')" name="ERROR_CODE"/>
+        <property expression="get-property('ERROR_MESSAGE')" name="ERROR_MESSAGE"/>
+        <property expression="get-property('ERROR_DETAIL')" name="ERROR_DETAIL"/>
+    </log>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
+    <payloadFactory media-type="json">
+        <format>
+            {
+                "error": {
+                    "code": "$1",
+                    "message": "$2",
+                    "detail":"$3",
+                    "operation":"$4"
+                }
+            }
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('ERROR_CODE')"/>
+            <arg evaluator="xml" expression="get-property('ERROR_MESSAGE')"/>
+            <arg evaluator="xml" expression="get-property('ERROR_DETAIL')"/>
+            <arg evaluator="xml" expression="$ctx:Operation"/>
+        </args>
+    </payloadFactory>
+    <respond/>
+</sequence>

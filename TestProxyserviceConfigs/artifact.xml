@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="loadproxrprops" groupId="com.example.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/loadproxrprops.xml</file>
+    </artifact>
+    <artifact name="loadproxrprops_proxy_metadata" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/loadproxrprops_proxy_metadata.yaml</file>
+    </artifact>
+    <artifact name="SalesforceOauthConfig" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>/src/main/synapse-config/local-entries/SalesforceOauthConfig.xml</file>
+    </artifact>
+    <artifact name="QuerySuccessfulResults" groupId="com.example.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/QuerySuccessfulResults.xml</file>
+    </artifact>
+    <artifact name="QuerySuccessfulResults_swagger" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/QuerySuccessfulResults_swagger.yaml</file>
+    </artifact>
+    <artifact name="QuerySuccessfulResults_metadata" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/QuerySuccessfulResults_metadata.yaml</file>
+    </artifact>
+    <artifact name="insertRecordsSeq" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/insertRecordsSeq.xml</file>
+    </artifact>
+    <artifact name="salesforceStatusCheckSeq" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/salesforceStatusCheckSeq.xml</file>
+    </artifact>
+    <artifact name="dataMapperSeq" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/dataMapperSeq.xml</file>
+    </artifact>
+    <artifact name="faultSequence" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/faultSequence.xml</file>
+    </artifact>
+    <artifact name="sfdcqueryConfig" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/sfdcqueryConfig.xml</file>
+    </artifact>
+    <artifact name="sfdcOAuthConfig" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/sfdcOAuthConfig.xml</file>
+    </artifact>
+    <artifact name="loadConfigSeq" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/loadConfigSeq.xml</file>
+    </artifact>
+    <artifact name="sfdcContact" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/sfdcContact.xml</file>
+    </artifact>
+</artifacts>
