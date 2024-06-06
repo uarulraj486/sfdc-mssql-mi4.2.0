@@ -63,7 +63,7 @@
             </log>
             <property expression="$axis2:HTTP_SC" name="HTTP_statusCode" scope="default" type="STRING"/>
             <sequence key="salesforceStatusCheckSeq"/>
-            <validate cache-schema="true" source="$json-eval($.)">
+            <validate cache-schema="true" source="json-eval($.)">
                 <schema key="sfdcContact"/>
                 <on-fail>
                     <payloadFactory media-type="json">
