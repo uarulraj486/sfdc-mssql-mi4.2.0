@@ -1,0 +1,23 @@
+openapi: 3.0.1
+info:
+  title: mimsssql
+  description: mimssqlservice
+  version: 1.0.0
+servers:
+  - url: http://localhost:8290/salesforce/createquery
+paths:
+  /:
+    post:
+      requestBody:
+        
+        content:
+          application/json:
+            schema:
+              type: object
+            
+      responses:
+        default:
+          description: Default response
+          content:
+            application/json:
+              
