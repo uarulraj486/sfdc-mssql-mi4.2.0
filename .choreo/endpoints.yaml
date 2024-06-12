@@ -4,5 +4,5 @@ endpoints:
     port: 8290
     type: REST
     networkVisibility: Public
-    context: /salesforce
+    context: /salesforce/createquery
     schemaFilePath: mimssql_openapi.yaml
