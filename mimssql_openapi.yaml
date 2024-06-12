@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: mimsssql
-  description: mimssqlservice
+  title: QuerySuccessfulResults
+  description: QuerySuccessfulResults
   version: 1.0.0
 servers:
   - url: http://localhost:8290/salesforce/createquery
