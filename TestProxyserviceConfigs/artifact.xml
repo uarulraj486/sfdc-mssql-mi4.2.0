@@ -41,4 +41,10 @@
     <artifact name="sfdcContact" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/local-entries/sfdcContact.xml</file>
     </artifact>
+<artifact name="SMTP_EMAIL_CONNECTION" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>/src/main/synapse-config/local-entries/SMTP_EMAIL_CONNECTION.xml</file>
+    </artifact>
+ <artifact name="emailConfig" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/emailConfig.xml</file>
+    </artifact>
 </artifacts>
