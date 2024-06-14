@@ -4,16 +4,34 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.example</groupId>
-    <artifactId>TestProxyConnectorExporter</artifactId>
+    <artifactId>TestProxyConnectorExporter_module</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
-  <groupId>com.example</groupId>
-  <artifactId>TestProxyConnectorExporter_module</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>TestProxyConnectorExporter_module</name>
-  <description>TestProxyConnectorExporter_module</description>
-  <modules>
-    <module>lib/salesforce_bulkapi_v2-connector-2.1.0</module>
-  </modules>
+  <groupId>com.example.lib</groupId>
+  <artifactId>salesforce_bulkapi_v2-connector</artifactId>
+  <version>2.1.0(2)</version>
+  <packaging>synapse/lib</packaging>
+  <name>salesforce_bulkapi_v2-connector</name>
+  <description>salesforce_bulkapi_v2-connector</description>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>wso2-esb-connector-plugin</artifactId>
+        <version>5.2.44</version>
+        <extensions>true</extensions>
+        <dependencies>
+          <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>javax.activation</artifactId>
+            <version>1.2.0</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <artifact>../../../salesforce_bulkapi_v2-connector-2.1.0.zip</artifact>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
