@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><artifacts>
     <artifact name="salesforce_bulkapi_v2-connector" groupId="com.example.lib" version="2.1.0(2)" type="synapse/lib" serverRole="EnterpriseServiceBus">
-        <file>salesforce_bulkapi_v2-connector-2.1.0(2).zip</file>
+        <file>salesforce_bulkapi_v2-connector-2.1.0.zip</file>
     </artifact>
 </artifacts>
