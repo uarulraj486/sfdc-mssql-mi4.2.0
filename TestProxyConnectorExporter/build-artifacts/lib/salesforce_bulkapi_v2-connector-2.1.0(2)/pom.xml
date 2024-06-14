@@ -29,7 +29,7 @@
           </dependency>
         </dependencies>
         <configuration>
-          <artifact>../../../salesforce_bulkapi_v2-connector-2.1.0(2).zip</artifact>
+          <artifact>../../../salesforce_bulkapi_v2-connector-2.1.0.zip</artifact>
         </configuration>
       </plugin>
     </plugins>
