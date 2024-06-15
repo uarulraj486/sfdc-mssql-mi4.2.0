@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="SMTP_EMAIL_CONNECTION" xmlns="http://ws.apache.org/ns/synapse">
+    <email.init>
+        <requireAuthentication>true</requireAuthentication>
+        <connectionType>SMTP</connectionType>
+        <password>{$ctx:SMTPPassword}</password>
+        <host>{$ctx:uri.var.SMTPHOST}</host>
+        <port>{$ctx:uri.var.SMTPPORT}</port>
+        <name>SMTP_EMAIL_CONNECTION</name>
+        <username>{$ctx:SMTPUsername}</username>
+    </email.init>
+</localEntry>
