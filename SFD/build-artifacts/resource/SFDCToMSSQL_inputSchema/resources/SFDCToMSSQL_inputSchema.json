@@ -1,0 +1,69 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "inputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "array",
+  "items" : [ {
+    "properties" : {
+      "Id" : {
+        "id" : "http://wso2jsonschema.org/0/Id",
+        "type" : "string"
+      },
+      "FirstName" : {
+        "id" : "http://wso2jsonschema.org/0/FirstName",
+        "type" : "string"
+      },
+      "LastName" : {
+        "id" : "http://wso2jsonschema.org/0/LastName",
+        "type" : "string"
+      },
+      "Phone" : {
+        "id" : "http://wso2jsonschema.org/0/Phone",
+        "type" : "string"
+      },
+      "Email" : {
+        "id" : "http://wso2jsonschema.org/0/Email",
+        "type" : "string"
+      },
+      "Fax" : {
+        "id" : "http://wso2jsonschema.org/0/Fax",
+        "type" : "string"
+      },
+      "Title" : {
+        "id" : "http://wso2jsonschema.org/0/Title",
+        "type" : "string"
+      },
+      "MailingStreet" : {
+        "id" : "http://wso2jsonschema.org/0/MailingStreet",
+        "type" : "string"
+      },
+      "MailingCity" : {
+        "id" : "http://wso2jsonschema.org/0/MailingCity",
+        "type" : "string"
+      },
+      "MailingState" : {
+        "id" : "http://wso2jsonschema.org/0/MailingState",
+        "type" : "string"
+      },
+      "MailingCountry" : {
+        "id" : "http://wso2jsonschema.org/0/MailingCountry",
+        "type" : "string"
+      },
+      "IsDeleted" : {
+        "id" : "http://wso2jsonschema.org/0/IsDeleted",
+        "type" : "string"
+      },
+      "OtherPostalCode" : {
+        "id" : "http://wso2jsonschema.org/0/OtherPostalCode",
+        "type" : "string"
+      },
+      "LastModifiedDate" : {
+        "id" : "http://wso2jsonschema.org/0/LastModifiedDate",
+        "type" : "string"
+      }
+    },
+    "id" : "http://wso2jsonschema.org/0",
+    "type" : "object"
+  } ]
+}
