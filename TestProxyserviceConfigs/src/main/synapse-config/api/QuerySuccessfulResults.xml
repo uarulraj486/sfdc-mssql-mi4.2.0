@@ -52,7 +52,7 @@
             <sequence key="loadConfigSeq"/>
             <salesforce_bulkapi_v2.getQueryJobResults configKey="SalesforceOauthConfig">
                 <queryJobId>{$ctx:jobId}</queryJobId>
-                <maxRecords>{get-property('maxRecords')}</maxRecords>
+                <maxRecords>{$ctx:maxRecords}</maxRecords>
                 <outputType>JSON</outputType>
                 <includeResultTo>BODY</includeResultTo>
             </salesforce_bulkapi_v2.getQueryJobResults>
