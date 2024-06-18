@@ -85,14 +85,15 @@
             <property expression="json-eval($)" name="dataMapperResponse" scope="default" type="STRING"/>
             <sequence description="insertContactRecordsSeq" key="insertRecordsSeq"/>
             <property expression="get-property('responseValue')" name="dataServiceCallMediatorResponse" scope="default" type="STRING"/>
-            <payloadFactory media-type="json">
+             <property expression="$trp:Sforce-NumberOfRecords" name="NumOfRecords" scope="default" type="STRING"/>
+		<payloadFactory media-type="json">
                 <format>[{	"status":"$1",
 	 									"successfulllyInsertedRecords":"$2"
 									}]
 			</format>
                 <args>
                     <arg evaluator="xml" expression="get-property('dataServiceCallMediatorResponse')"/>
-                    <arg evaluator="xml" expression="$ctx:maxRecords"/>
+                    <arg evaluator="xml" expression="$ctx:NumOfRecords"/>
                 </args>
             </payloadFactory>
             <respond/>
