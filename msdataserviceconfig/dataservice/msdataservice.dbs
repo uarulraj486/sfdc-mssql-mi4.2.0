@@ -29,7 +29,7 @@
     </call-query>
   </resource>
   <query id="addContact" useConfig="ContactDBDetails">
-    <sql>insert into Contact(id,name,phone,fax,email,title,address,backupPostalCode,Isdeleted,lastModifieddate)
+    <sql>insert into MIPOC.dbo.Contact(id,name,phone,fax,email,title,address,backupPostalCode,Isdeleted,lastModifieddate)
 			values(:id,:name,:phone,:fax,:email,:title,:address,:backupPostalCode,:Isdeleted,:lastModifieddate)
 		</sql>
     <param name="name" paramType="SCALAR" sqlType="STRING" />
@@ -45,7 +45,7 @@
   </query>
   <query id="GetContactDetails" useConfig="ContactDBDetails">
     <sql>select id, name,phone,fax,email,title,address,backupPostalCode,Isdeleted,lastModifiedDate
-from Contact where id=:id </sql>
+from MIPOC.dbo.Contact where id=:id </sql>
     <param name="id" paramType="SCALAR" sqlType="STRING" />
     <result element="Entries" rowName="Entry">
       <element name="id" column="id" xsdType="string" />
