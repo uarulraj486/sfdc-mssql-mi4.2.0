@@ -28,5 +28,8 @@
     <module>local-entries/sfdcOAuthConfig</module>
     <module>sequences/loadConfigSeq</module>
     <module>local-entries/sfdcContact</module>
+    <module>local-entries/emailConfig</module>
+    <module>local-entries/SMTP_EMAIL_CONNECTION</module>
+    <module>sequences/SendingMailSequence</module>  
   </modules>
 </project>
