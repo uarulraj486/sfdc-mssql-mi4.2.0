@@ -18,6 +18,10 @@
     <com.example.sequence_._faultSequence>capp/EnterpriseServiceBus</com.example.sequence_._faultSequence>
     <com.example.local-entry_._sfdcOAuthConfig>capp/EnterpriseServiceBus</com.example.local-entry_._sfdcOAuthConfig>
     <com.example.lib_._salesforce_bulkapi_v2-connector>capp/EnterpriseServiceBus</com.example.lib_._salesforce_bulkapi_v2-connector>
+    <com.example.lib_._email-connector>capp/EnterpriseServiceBus</com.example.lib_._email-connector>
+    <com.example.sequence_._SendingMailSequence>capp/EnterpriseServiceBus</com.example.sequence_._SendingMailSequence>
+    <com.example.local-entry_._emailConfig>capp/EnterpriseServiceBus</com.example.local-entry_._emailConfig>
+    <com.example.local-entry_._SMTP_EMAIL_CONNECTION>capp/EnterpriseServiceBus</com.example.local-entry_._SMTP_EMAIL_CONNECTION>   
     <com.example.local-entry_._sfdcContact>capp/EnterpriseServiceBus</com.example.local-entry_._sfdcContact>
     <com.example.local-entry_._sfdcqueryConfig>capp/EnterpriseServiceBus</com.example.local-entry_._sfdcqueryConfig>
     <com.example.sequence_._salesforceStatusCheckSeq>capp/EnterpriseServiceBus</com.example.sequence_._salesforceStatusCheckSeq>
@@ -35,6 +39,7 @@
     <com.example.resource_._SFDCToMSSQL_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._SFDCToMSSQL_inputSchema>
     <com.microsoft.sqlserver_._mssql-jdbc>capp/ApplicationServer</com.microsoft.sqlserver_._mssql-jdbc>
     <com.example.sequence_._dataMapperSeq>capp/EnterpriseServiceBus</com.example.sequence_._dataMapperSeq>
+      
   </properties>
   <dependencies>
     <dependency>
@@ -56,11 +61,35 @@
       <type>zip</type>
     </dependency>
     <dependency>
+      <groupId>com.example.lib</groupId>
+      <artifactId>email-connector</artifactId>
+      <version>1.1.2</version>
+      <type>zip</type>
+    </dependency>   
+    <dependency>
       <groupId>com.example.local-entry</groupId>
       <artifactId>sfdcContact</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
+    <dependency>
+      <groupId>com.example.local-entry</groupId>
+      <artifactId>emailConfig</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.sequence</groupId>
+      <artifactId>SendingMailSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.local-entry</groupId>
+      <artifactId>SMTP_EMAIL_CONNECTION</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>   
     <dependency>
       <groupId>com.example.local-entry</groupId>
       <artifactId>sfdcqueryConfig</artifactId>
