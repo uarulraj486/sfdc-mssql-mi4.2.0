@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="salesforceStatusCheckSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+       <log level="custom">
+        <property name="salesforceStatusCheckSeq" value="salesforceStatusCheckSeq invoked"/>
+    </log>
+    <property expression="json-eval($[0].message)" name="message" scope="default" type="STRING"/>
     <filter regex="200" source="$ctx:HTTP_statusCode">
         <then/>
         <else>
             <property expression="$ctx:HTTP_statusCode" name="statusCode" scope="default" type="STRING"/>
             <property expression="json-eval($[0].errorCode)" name="code" scope="default" type="STRING"/>
             <property expression="json-eval($[0].message)" name="message" scope="default" type="STRING"/>
-            <payloadFactory media-type="json">
-                <format>[{"status":"Failure",
-							  "statusCode":"$1",
-							   "message":"$2"
-							}]</format>
-                <args>
-                    <arg evaluator="xml" expression="get-property('statusCode')"/>
-                    <arg evaluator="xml" expression="concat(get-property('code'),' ',get-property('message'))"/>
-                </args>
-            </payloadFactory>
-            <respond/>
+            <property expression="$ctx:queryJobIdProperty" name="JobId" scope="default" type="STRING"/>
+            <sequence key="SendingMailSequence"/>
+            <property expression="json-eval($.result.success)" name="EmailSendStatus" scope="default" type="STRING"/>
+            <filter regex="true" source="$ctx:EmailSendStatus">
+                <then>
+                    <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+                    <payloadFactory media-type="json">
+                        <format>{"Mail Successfully Sent Status":"$1"
+							}</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('EmailSendStatus')"/>
+                        </args>
+                    </payloadFactory>
+                    <respond/>
+                </then>
+                <else>
+                    <log level="custom">
+                        <property expression="$ctx:HTTP_connectorStatusCode" name="HTTP_connectorStatusCode"/>
+                    </log>
+                </else>
+            </filter>
         </else>
     </filter>
 </sequence>
